@@ -14,7 +14,7 @@ class ProductDetail extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Image.network(product.image),
+          // Image.network(product.image ?? ''),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -32,7 +32,7 @@ class ProductDetail extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  product.name,
+                  product.name ?? '',
                   style: const TextStyle(
                     fontSize: 16,
                   ),
