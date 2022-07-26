@@ -20,8 +20,6 @@ class AddToCartSuccess extends CartState {
   List<Object> get props => [cart];
 }
 
-class RemoveFromCartSuccess extends CartState {}
-
 class CartFailed extends CartState {
   final String error;
 
@@ -30,7 +28,3 @@ class CartFailed extends CartState {
   @override
   List<Object> get props => [error];
 }
-
-class IncreaseProductQuantitySuccess extends CartState {}
-
-class DecreaseProductQuantitySuccess extends CartState {}

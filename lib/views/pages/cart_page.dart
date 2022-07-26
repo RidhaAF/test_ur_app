@@ -18,8 +18,7 @@ class CartPage extends StatelessWidget {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          }
-          if (state is AddToCartSuccess) {
+          } else if (state is AddToCartSuccess) {
             return ListView.builder(
               itemCount: state.cart.length,
               itemBuilder: (context, index) {
@@ -43,26 +42,12 @@ class CartPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // IconButton(
-                    //   icon: const Icon(Icons.remove),
-                    //   onPressed: () {
-                    //     // decrease quantity
-                    //   },
-                    // ),
-                    // const Text("1"),
-                    // IconButton(
-                    //   icon: const Icon(Icons.add),
-                    //   onPressed: () {
-                    //     // increase quantity
-                    //   },
-                    // ),
                   ],
                 );
               },
             );
-          } else {
-            return const Center(child: Text("Cart is empty"));
           }
+          return const Center(child: Text("Cart is empty"));
         },
       ),
     );
