@@ -2,15 +2,21 @@ class Product {
   String? id;
   String? name;
   double? price;
-  String? image;
+  String? variant;
+  List<String>? images;
 
-  Product({this.id, this.name, this.price, this.image});
+  Product({this.id, this.name, this.price, this.variant, this.images});
 
-  Product.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    price = double.parse(json['price']);
-    image = json['image'];
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'],
+      name: json['name'],
+      price: double.parse(json['price']),
+      variant: json['is_variant'],
+      images: (json['images'] as List<dynamic>)
+          .map((images) => images as String)
+          .toList(),
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -18,7 +24,8 @@ class Product {
       "id": id,
       "name": name,
       "price": price.toString(),
-      "image": image,
+      "is_variant": variant,
+      "images": images,
     };
   }
 }

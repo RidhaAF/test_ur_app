@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_ur_app/models/product_model.dart';
@@ -14,7 +15,17 @@ class ProductDetail extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          // Image.network(product.image ?? ''),
+          CarouselSlider.builder(
+            itemCount: product.images?.length,
+            itemBuilder: ((context, index, realIndex) {
+              return Image.network(product.images?[index] ?? '');
+            }),
+            options: CarouselOptions(
+              aspectRatio: 1 / 1,
+              viewportFraction: 1,
+              enableInfiniteScroll: false,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -37,6 +48,16 @@ class ProductDetail extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
+                product.variant == "1"
+                    ? const Text(
+                        "Produk ini memiliki varian",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      )
+                    : const SizedBox(),
               ],
             ),
           ),
