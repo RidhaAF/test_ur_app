@@ -22,11 +22,6 @@ class ProductService {
       List data = jsonDecode(response.body)['products'];
       List<Product> products = [];
 
-      // limit products to 10
-      // for (int i = 0; i < 15; i++) {
-      //   products.add(Product.fromJson(data[i]));
-      // }
-
       for (var item in data) {
         products.add(Product.fromJson(item));
       }
