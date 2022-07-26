@@ -55,7 +55,9 @@ class _HomePageState extends State<HomePage> {
               itemCount: state.products.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  // leading: Image.network(state.products[index].image ?? ''),
+                  leading: Image.network(
+                    state.products[index].images?[0] ?? '',
+                  ),
                   title: Text(state.products[index].name ?? ''),
                   subtitle: Text(
                     NumberFormat.currency(
